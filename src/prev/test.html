@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Tracker</title>
+    <style>
+        body {
+            height: 2000px;
+            width: 2000px;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #scrollData {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="scrollData">
+        Scroll Position: <br>
+        Horizontal: 0px <br>
+        Vertical: 0px
+    </div>
+
+    <script>
+        const scrollData = document.getElementById('scrollData');
+
+        window.onscroll = function() {
+            const horizontalScroll = window.scrollX || window.pageXOffset;
+            const verticalScroll = window.scrollY || window.pageYOffset;
+
+            scrollData.innerHTML = `
+                Scroll Position: <br>
+                Horizontal: ${horizontalScroll}px <br>
+                Vertical: ${verticalScroll}px
+            `;
+        };
+    </script>
+</body>
+</html>

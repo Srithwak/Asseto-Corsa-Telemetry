@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Circle</title>
+   <style>
+      body {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100vh;
+         margin: 0;
+      }
+
+      form {
+         display: flex;
+         flex-direction: column;
+      }
+
+      circle#c1 {
+         transition: stroke-dashoffset ease-in-out 0.1s;
+      }
+   </style>
+</head>
+
+<body>
+   <svg width="240" height="240" viewBox="0 0 100 110" fill="none">
+      <defs>
+         <linearGradient id="lg1" x1="0.7" gradientTransform="rotate(45)">
+            <stop offset="0%" stop-color="#eee" />
+            <stop offset="100%" stop-color="#ddd" />
+         </linearGradient>
+         <mask id="m1">
+            <!-- <circle transform="rotate(135)" stroke="white" stroke-width="12" r="44" stroke-dasharray="270 360" 
+               pathLength="360" /> -->
+         </mask>
+         <radialGradient id="rg1">
+            <stop offset="0%" stop-color="#aaa" />
+            <stop offset="40%" stop-color="#ccc" />
+            <stop offset="90%" stop-color="white" />
+         </radialGradient>
+      </defs>
+      <ellipse cx="50" cy="102" rx="40" ry="8" fill="url(#rg1)" />
+      <g transform="translate(50 50)">
+         <circle stroke="#eee" stroke-width="12" r="44" />
+         <g mask="url(#m1)">
+            <rect transform="translate(-50 -50)" width="100" height="100" fill="url(#lg1)" />
+            <circle stroke="#ccc" stroke-width="12" r="44" stroke-dasharray=".5 4.5" pathLength="360" />
+            <circle stroke="#bbb" stroke-width="6" r="41" />
+         </g>
+         <g transform="rotate(135)">
+            <circle id="c2" stroke="blue" stroke-width="8" r="45" stroke-dasharray="100 133" pathLength="133.5"
+               stroke-dashoffset="25"/>
+         </g>
+         <g transform="rotate(135)">
+            <circle id="c1" stroke="red" stroke-width="8" r="41" stroke-dasharray="100 133" pathLength="133.5"
+               stroke-dashoffset="25"/>
+         </g>
+         <line transform="rotate(45) translate(38 0)" stroke="#aaa" stroke-width="1" x2="12" />
+         <line transform="rotate(135) translate(38 0)" stroke="#aaa" stroke-width="1" x2="12" />
+         
+         <text id="t1" y="-10" font-family="apple-system" font-size="17" font-weight="400" text-anchor="middle"
+            dominant-baseline="middle" fill="gray">75 kmh</text>
+         <text id="t2" font-family="apple-system" font-size="17" font-weight="400" text-anchor="middle"
+            dominant-baseline="middle" fill="gray" transform="translate(0, 10)">80000</text>
+         <text id="t3" y="20" font-family="apple-system" font-size="8" font-weight="400" text-anchor="middle"
+            dominant-baseline="hanging" fill="gray">10</text>
+      </g>
+   </svg>
+   <form name="form01">
+      <label>Value: <input name="val" type="range" min="0" max="100" value="75" /></label>
+      <label>Threshold: <input name="tval" type="range" min="0" max="100" value="80" /></label>
+      <label>Additional: <input name="addval" type="range" min="0" max="100" value="10" /></label>
+   </form>
+   <script>
+      const c1 = document.getElementById('c1');
+      const t1 = document.getElementById('t1');
+      const g1 = document.getElementById('g1');
+      const t2 = document.getElementById('t2');
+      const t3 = document.getElementById('t3');
+
+      document.forms.form01.val.addEventListener('input', e => {
+         c1.setAttribute('stroke-dashoffset', 100 - e.target.valueAsNumber);
+         t1.textContent = e.target.valueAsNumber + ' kmh';
+      });
+
+      document.forms.form01.tval.addEventListener('input', e => {
+         c2.setAttribute('stroke-dashoffset', 100 - e.target.valueAsNumber);
+         t2.textContent = e.target.valueAsNumber;
+      });
+      
+      document.forms.form01.addval.addEventListener('input', e => {
+         t3.textContent = e.target.valueAsNumber;
+      });
+   </script>
+</body>
+
+</html>

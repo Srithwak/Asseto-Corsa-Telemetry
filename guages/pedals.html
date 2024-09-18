@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Bar Graph Example</title>
+   <style>
+      body {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100vh;
+         margin: 0;
+         background-color: #f4f4f4;
+      }
+
+      #myChart {
+         max-width: 240px;
+         max-height: 240px;
+      }
+   </style>
+</head>
+
+<body>
+   <canvas id="myChart"></canvas>
+
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script>
+      const ctx = document.getElementById('myChart').getContext('2d');
+
+      const data = {
+         labels: ['Clutch', 'Brake', 'Accelerator'],
+         datasets: [{
+            label: 'Pedal Pressure',
+            data: [0.5, 0.75, 0.1],  // Values between 0 and 1
+            backgroundColor: [
+               'rgba(255, 206, 86, 1)',   // Yellow
+               'rgba(255, 0, 0, 1)',      // Red
+               'rgba(255, 159, 64, 1)'    // Orange
+            ],
+            borderColor: 'rgba(0, 0, 0, 1)', // Solid black outline
+            borderWidth: function(ctx) {
+                const index = ctx.dataIndex;
+                const value = ctx.dataset.data[index];
+                return value < 1 ? 2 : 0; // 2px border fr values < 1, 0px for full bars
+            },
+            hoverBorderWidth: 2, // Ensures the border is visible on hover
+            borderSkipped: false  // Ensures the border is around all sides
+         }]
+      };
+
+      const options = {
+         scales: {
+            x: {
+               display: true,   // Show x-axis
+               ticks: {
+                  font: {
+                     size: 14
+                  },
+                  color: '#333'
+               }
+            },
+            y: {
+               beginAtZero: true,
+               max: 1,          // Max value set to 1 for y-axis
+               display: false,   // Display y-axis
+               ticks: {
+                  stepSize: 0.1,
+                  font: {
+                     size: 14
+                  },
+                  color: '#333',
+                  callback: function(value) { return value.toFixed(2); } // Display as decimal
+               },
+               grid: {
+                  display: false // Hide grid lines
+               }
+            }
+         },
+         plugins: {
+            legend: {
+               display: false   // Hide legend
+            },
+            tooltip: {
+               enabled: true
+            }
+         }
+      };
+
+      const myChart = new Chart(ctx, {
+         type: 'bar',
+         data: data,
+         options: options
+      });
+
+   </script>
+</body>
+
+</html>

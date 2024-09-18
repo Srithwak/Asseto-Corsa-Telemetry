@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+   <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+   <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+   <script src="https://cdn.anychart.com/releases/v8/themes/dark_turquoise.min.js"></script>
+   <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+   <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+   <style type="text/css">
+      html,
+      body {
+         margin: 0;
+         padding: 0;
+         background-color: #2b2b2b;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100vh;
+         overflow: hidden;
+      }
+
+      .graphs {
+         display: flex;
+      }
+
+      .half {
+         display: flex;
+         flex-direction: column;
+      }
+
+      .graph {
+         height: 270px;
+         width: 600px;
+         position: relative;
+         overflow-x: hidden;
+      }
+
+      .graph.bottom {
+         overflow-x: auto; /* Enable horizontal scrollbar for the bottom graphs */
+      }
+
+      .checkboxContainer {
+         position: absolute;
+         top: 10px;
+         left: 50%;
+         transform: translateX(-50%);
+         z-index: 1000;
+         display: flex;
+         flex-direction: row;
+         justify-content: center;
+         padding: 5px;
+         gap: 20px;
+      }
+
+      label {
+         cursor: pointer;
+         color: white;
+         display: flex;
+         align-items: center;
+      }
+
+      input[type="checkbox"] {
+         margin-right: 5px;
+         width: 16px;
+         height: 16px;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="graphs">
+      <div class="half">
+         <div class="graph" id="container1">
+            <div class="checkboxContainer" id="checkboxContainer1"></div>
+         </div>
+         <div class="graph" id="container2">
+            <div class="checkboxContainer" id="checkboxContainer2"></div>
+         </div>
+         <div class="graph" id="container3">
+            <div class="checkboxContainer" id="checkboxContainer3"></div>
+         </div>
+         <div class="graph" id="container4">
+            <div class="checkboxContainer" id="checkboxContainer4"></div>
+         </div>
+      </div>
+      <div class="half">
+         <div class="graph bottom" id="container5">
+            <div class="checkboxContainer" id="checkboxContainer5"></div>
+         </div>
+         <div class="graph bottom" id="container6">
+            <div class="checkboxContainer" id="checkboxContainer6"></div>
+         </div>
+         <div class="graph" id="container7">
+            <div class="checkboxContainer" id="checkboxContainer7"></div>
+         </div>
+         <div class="graph" id="container8">
+            <div class="checkboxContainer" id="checkboxContainer8"></div>
+         </div>
+      </div>
+   </div>
+
+   <script src="graphScript.js"></script>
+</body>
+
+</html>

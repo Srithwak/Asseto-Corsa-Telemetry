@@ -1,0 +1,114 @@
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   font-weight: 500;
+   line-height: 1;
+   user-select: none;
+}
+
+/* STYLE GUIDE
+background         -> #000
+text               -> #555
+text hover         -> #777
+text selected      -> #fff
+elements           -> #333
+elements hover     -> #555
+elements highlight -> #f0f (customizable)
+*/
+
+:root {
+   --theme: #ff00ff;
+}
+
+body {
+   background-color: #000000;
+   color: #ffffff;
+}
+
+.container {
+   display: grid;
+   /* grid-template-columns: 2fr 2fr 15fr 15fr 5fr; */
+   height: 100vh;
+   width: 100vw;
+}
+
+.gauge {
+   background-color: black;
+   padding: 1rem;
+   height: 240px;
+   width: 240px;
+}
+
+.steering__container {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+}
+.pedals__container {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+}
+
+.steering {
+   margin: 0 auto;
+   width: 100%;
+}
+
+.pedals {
+   display: flex;
+   gap: 1rem;
+   margin: 0 auto;
+   /* width: 100%; */
+}
+
+.pedal {
+   width: 1rem;
+   height: 6rem;
+   display: flex;
+   align-items: flex-end;
+   
+   /* background-color: #222; */
+}
+
+.clutch {
+   border: 1px solid #66f;
+}
+
+.brake {
+   border: 1px solid #f66;
+}
+
+.throttle {
+   border: 1px solid #6f6;
+}
+
+.ffb {
+   border: 1px solid #666;
+}
+
+.clutch__fill {
+   background-color: #66f;
+   width: 100%;
+   height: 0%;
+}
+
+.brake__fill {
+   background-color: #f66;
+   width: 100%;
+   height: 0%;
+}
+
+.throttle__fill {
+   background-color: #6f6;
+   width: 100%;
+   height: 0%;
+}
+
+.ffb__fill {
+   background-color: #666;
+   width: 100%;
+   height: 0%;
+}
